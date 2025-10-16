@@ -1,4 +1,51 @@
-h1{
+body {
+    height: 100vh;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Helvetica;
+}
+
+div{
+    display: flex;
+}
+
+.title, .game, .results, .options, .ganador {
+    justify-content: center;
+    margin: 24px;
+}
+
+.game, .choice {
+    flex-direction: column;
     align-items: center;
+}
+
+.options button {
+    margin: 0px 8px;
+}
+
+.results {
+    align-items: center;
+}
+
+.choice img {
+    display: block;
+}
+
+.imagen {
+    width: 200px;
+    height: 200px;
+}
+
+#versus{
+    width: 100px;
+    margin: 0px 0px 66px 0px;
+}
+
+.ganador {
+    height: 100px;
+}
+
+#puntajeC, #puntajeJ {
+    height: 10px;
 }

@@ -1,60 +1,71 @@
-
+const btn = document.querySelectorAll(".options button")
 
 function getComputerChoice() {
-    let play = ["rock", "paper", "scissors"];
+    let play = ["Rock", "Paper", "Scissors"];
     let i = Math.trunc(Math.random()*3);
     return play[i];
 }
 
-function getHumanChoice() {
-    let input = prompt("Input rock, paper or scissors").toLowerCase();
-    return input;
+function setImage(player, choice){
+    const p = document.querySelector(player)
+    let image = ""
+    
+    switch(choice){
+        case "Rock":
+            image += "piedra";
+            break;
+        case "Paper":
+            image += "papel";
+            break;
+        case "Scissors":
+            image += "tijera";
+            break;
+    }
+
+    if(player == "#player"){
+        image += "1"
+    } else {
+        image += "2"
+    }
+
+    p.setAttribute("src", image + ".png")
 }
 
 let computerScore = 0;
 let humanScore = 0;
+let choice = "";
 
-function playRound(){
-    const humanChoice = getHumanChoice();
+btn.forEach(button => {
+    button.addEventListener("click", () => {choice = button.textContent})
+    button.addEventListener("click", playRound)
+})
+
+function playRound(event){
+    event.preventDefault()
+    
+    const humanChoice = choice;
     const computerChoice = getComputerChoice();
 
-
-    let winLoseTie = ""; 
-    let beatsOrTies = "";
-    let winner = "";
-    let loser = "";
+    setImage("#player", humanChoice);
+    setImage("#computer", computerChoice);
 
     if(humanChoice == computerChoice){
-        winLoseTie = " tie, ";
-        winner = humanChoice;
-        beatsOrTies = " ties with "
-        loser = computerChoice;
-    } else if(humanChoice == "rock" && computerChoice == "scissors" || humanChoice.length > computerChoice.length){
-        winLoseTie = " won, ";
-        winner = humanChoice;
-        beatsOrTies = " beats "
-        loser = computerChoice;
+        message = "It's a tie!";
+    } else if(humanChoice == "Rock" && computerChoice == "Scissors" || humanChoice == "Paper" && computerChoice == "Rock" || humanChoice == "Scissors" && computerChoice == "Paper"){
+        message = "You Win!";
         humanScore++;
     } else {
-        winLoseTie = " lost, ";
-        winner = computerChoice;
-        beatsOrTies = " beats "
-        loser = humanChoice;
+        message = "You Lose!";
         computerScore++;
     }
     
-    let message = "You " + winLoseTie + winner + beatsOrTies + loser;
+    const hScorer = document.querySelector("#puntajeJ")
+    const cScorer = document.querySelector("#puntajeC")
+    
+    hScorer.textContent = humanScore
+    cScorer.textContent = computerScore
 
-    console.log(message);
-}
-
-function playGame(){
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
+    const ganador = document.querySelector(".ganador h1")
+    ganador.textContent = message;
 
 }
-
-playGame()

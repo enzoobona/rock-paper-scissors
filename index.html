@@ -5,28 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="javascript.js" defer></script>
-    <style src="stylesheet.css"></style>
+    <link rel="stylesheet" href="stylesheet.css"></link>
 </head>
 <body>
     <div class="title">
         <h1>ROCK, PAPER, SCISSORS</h1>
     </div>
-    <div class="options">
-        <button>Rock</button>
-        <button>Paper</button>
-        <button>Scissors</button>
-    </div>
-    <div class="results">
-        <div>
-            <img id="player">
-            <p>Jugador</p>
-            <p id="puntaje"></p>
+    <div class="game">
+        <div class="options">
+            <button>Rock</button>
+            <button>Paper</button>
+            <button>Scissors</button>
         </div>
-        <img src="vs.png" width="100px">
-        <div>
-            <img id="machine">
-            Computadora
+        <div class="results">
+            <div class="choice">
+                <div class="imagen">
+                    <img id="player">
+                </div>
+                <p>Player</p>
+                <p id="puntajeJ"></p>
+            </div>
+            <img id="versus" src="vs.png" width="100px">
+            <div class="choice">
+                <div class="imagen">
+                    <img id="computer">
+                </div>
+                <p>Computer</p>
+                <p id="puntajeC"></p>
+            </div>
         </div>
     </div>
+    <div class="ganador">
+        <h1></h1>
+    </div>
+
 </body>
 </html>
